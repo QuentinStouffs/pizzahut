@@ -12,8 +12,8 @@
                 <?= $p->nom_pizza; ?>
             </div>
             <div class="thumb">
-               <img src="http://lorempixel.com/400/200/cats/">
-                <!--<?= img($p->PK_pizza.'.jpg', $p->nom_pizza); ?>-->
+<!--               <img src="http://lorempixel.com/400/200/cats/">-->
+                <?= img($p->PK_pizza.'.jpg', $p->nom_pizza); ?>
             </div>
             <div class="prix text-center">
                 <?= $p->prix; ?>

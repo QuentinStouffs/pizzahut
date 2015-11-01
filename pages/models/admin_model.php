@@ -65,7 +65,32 @@ class admin_model extends CI_Model {
                       'prix' => $this->input->post('prix')
                         );
         $insert = $this->db->where('PK_pizza', $id)->update('pizza', $data);
-            return $insert;
+        
+        // ajout de l'image au dossier assets/images
+        
+            $config = array('upload_path' => './assets/images/',
+                            'allowed_types' => 'gif|jpg|png',
+                            'overwrite' => TRUE,
+                            'max_size' => 2048,
+     //                       'max_height' => 100,
+     //                        'max_width' => 200,
+                            'file_name' => $id
+                                        );
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('image');
+
+            //Redimensionne l'image
+            $imagedata = $this->upload->data();  //retourne le chemin complet
+            $imageconfig = array('source_image' => $imagedata['full_path'], 
+                                 'overwrite' => TRUE,
+                                'width' => 200,
+                                 'height' => 100
+                                );
+            $this->load->library('image_lib', $imageconfig);
+            $this->image_lib->resize();
+        
+        
+        return $insert;
         
     }
 }
