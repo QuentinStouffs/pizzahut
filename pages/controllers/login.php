@@ -73,4 +73,11 @@ class login extends CI_CONTROLLER {
             }
         }
     }
+    
+    // Deconnexion
+    function deconnexion(){
+        
+        $this->session->sess_destroy();
+        redirect('');
+    }
 }
