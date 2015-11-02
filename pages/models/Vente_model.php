@@ -52,7 +52,7 @@ class vente_model extends CI_Model {
                          'quantite' => $article['qty']
                         );
             
-            $this->db->insert('details_cmd', $row);
+            $this->db->insert('detail_cmd', $row);
         }
     return TRUE;    
     }
