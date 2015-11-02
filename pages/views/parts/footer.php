@@ -1,7 +1,7 @@
-<div id="footer">
-    <p>&copy; -Moi- &amp; BES-Dev 2015</p>
-</div>
+    <footer>
+        <p>Site réalisé pour l'examen Framework&amp;POO BES-Dev 2015 - &copy; Quentin Stouffs</p>
+    </footer>
 
-    
+</div>   
 </body>
 </html>

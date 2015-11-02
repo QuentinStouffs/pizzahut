@@ -24,7 +24,8 @@ class login extends CI_CONTROLLER {
             
             $data = array( //recupereation du username et nouvelle variable is_logged_in 
                     'pseudo' => $this->input->post('pseudo'),
-                        'is_logged_in' => TRUE
+                    'is_logged_in' => TRUE,
+                    'is_admin' => FALSE
             
                             );
             $this->session->set_userdata($data); //envoi du tableau $data dans la variable SESSION
