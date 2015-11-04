@@ -14,7 +14,7 @@
                             <h3 class="panel-title"><?= $p->nom_pizza; ?></h3>
                         </div>
                         <div class="panel-body">
-                            <div class="thumb">
+                            <div class="thumbnail">
                             <!--                       <img src="http://lorempixel.com/400/200/cats/">-->
                                 <?= img($p->PK_pizza.'.jpg', $p->nom_pizza); ?>
                             </div>
