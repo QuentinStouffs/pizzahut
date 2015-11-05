@@ -8,33 +8,38 @@
         <h2>Liste des Pizzas</h2>      
             <?php 
                 foreach($pizzas as $p): ?> <!--Listage des pizzas-->
-                    <div class="panel panel-default">
-                        <?= form_open('vente/ajout_panier'); ?> <!--//ouverture du formulaire pour le panier-->
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><?= $p->nom_pizza; ?></h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="thumbnail">
+                    <div class="col-xs-4">
+                       <div class="thumbnail">
+                         <!--//ouverture du formulaire pour le panier-->
+                        
+                            <h3 class="caption"><?= $p->nom_pizza; ?></h3>
+                        
+                    
                             <!--                       <img src="http://lorempixel.com/400/200/cats/">-->
                                 <?= img($p->PK_pizza.'.jpg', $p->nom_pizza); ?>
-                            </div>
+                            
                             <div class="prix text-center">
-                                <?= $p->prix; ?>
+                                <span><?= $p->prix; ?><i class="glyphicon glyphicon-euro"></i></span>
                             </div>
                             <div class="ingredients">
                                 <?= $p->ingredients; ?>
                             </div>
-                            <input type="number" value="1" name="quantite">
-                            <?= form_hidden('id', $p->PK_pizza); ?>
-                            <button type="submit" class="btn btn-info">
-                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Ajouter
-                            </button>
-                           <!-- <?= form_submit('action', 'ajouter au caddie', 'class="btn btn-info text-center"'); ?>-->
+                            
+                            <?= form_open('vente/ajout_panier', array('class' => 'form-inline')); ?>
+                               <div class="form-group">
+                                   <label class="sr-only" for="quantite">quantite</label>
+                                    <input type="number" id ="qty" class="form-control" value="1" name="quantite">
+                                    <?= form_hidden('id', $p->PK_pizza); ?>
+                               </div>
+                                <button type="submit" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Ajouter
+                                </button>
+                               
                             <?= form_close(); ?>
                         </div>
                     </div>
+                    
             <?php endforeach; ?> 
-        </ul>
     </section>
     <!--    Affichage du caddie si existe-->
        <?php //var_dump($this->cart->contents()); ?>
