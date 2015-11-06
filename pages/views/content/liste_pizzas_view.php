@@ -28,7 +28,7 @@
                             <?= form_open('vente/ajout_panier', array('class' => 'form-inline')); ?>
                                <div class="form-group">
                                    <label class="sr-only" for="quantite">quantite</label>
-                                    <input type="number" id ="qty" class="form-control" value="1" name="quantite">
+                                    <input type="number" class="form-control" style="width: 6rem;" value="1" name="quantite">
                                     <?= form_hidden('id', $p->PK_pizza); ?>
                                </div>
                                 <button type="submit" class="btn btn-info">
@@ -46,8 +46,8 @@
         <?php if($caddie = $this->cart->contents()): ?>
 
     <aside id="caddie" class="col-xs-4">
-        <table>
-            <caption>Votre commande <?= anchor('vente/destroy', '<span class="supprime glyphicon glyphicon-trash">sup</span>'); ?></caption>
+        <table class="table table-striped">
+            <caption>Votre commande <?= anchor('vente/destroy', '<span class="glyphicon glyphicon-trash red"></span>'); ?></caption>
 
     <!--                <a href="vente/supcaddie"><span class="glyphicon glyphicon-trash"></span></a></caption>-->
                 <thead>
@@ -61,15 +61,16 @@
     <!--                parcours le caddie -->
                 <?php foreach ($caddie as $article): ?>
                     <tr>
-                        <td> <?= form_open('vente/update'); ?>
+                        <td> <?= form_open('vente/update', array('class' => 'form-inline')); ?>
                         <?= form_hidden ('rowid', $article['rowid']); ?>
-                        <input type="number" name="majqty" value="<?= $article['qty']; ?>">
+                        <label for="majqty" class="sr-only">Quantité</label>
+                        <input type="number" class="form-control" style="width: 5rem" name="majqty" value="<?= $article['qty']; ?>">
                         <?= form_submit('update', 'Modifier'); ?>
                         <?= form_close(); ?>
                         </td>
                         <td><?= $article['name']; ?></td>
                         <td><?= $article['subtotal'] ?></td>
-                        <td><?= anchor('vente/supprimer/'.$article['rowid'], '<span class="supprime glyphicon glyphicon-remove-circle">sup</span>'); ?></td>
+                        <td><?= anchor('vente/supprimer/'.$article['rowid'], '<span class="glyphicon glyphicon-remove-circle red"></span>'); ?></td>
                     </tr>
                 <?php endforeach; ?>
                 <tfoot>
