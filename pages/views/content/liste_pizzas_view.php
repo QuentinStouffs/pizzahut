@@ -42,7 +42,7 @@
             <?php endforeach; ?> 
     </section>
     <!--    Affichage du caddie si existe-->
-       <?php //var_dump($this->cart->contents()); ?>
+      
         <?php if($caddie = $this->cart->contents()): ?>
 
     <aside id="caddie" class="col-xs-4">
@@ -55,7 +55,6 @@
                         <th>Qté</th>
                         <th>Nom</th>
                         <th>Prix</th>
-                        <th>Supprimer</th>
                     </tr>
                 </thead>
     <!--                parcours le caddie -->
@@ -65,25 +64,26 @@
                             <?= form_hidden ('rowid', $article['rowid']); ?>
                             <label for="majqty" class="sr-only">Quantité</label>
                             <input type="number" class="form-control" style="width: 5rem" name="majqty" value="<?= $article['qty']; ?>">
-                            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-ok"></i></button>
-                            
+                            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span></button>
+                            <?= anchor('vente/supprimer/'.$article['rowid'], '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>'); ?>
                             <?= form_close(); ?>
+                            
                         </td>
                         <td><?= $article['name']; ?></td>
                         <td><?= $article['subtotal'] ?> €</td>
-                        <td><?= anchor('vente/supprimer/'.$article['rowid'], '<button type="button" class="btn btn-info"><i class="glyphicon glyphicon-remove red"></i></button>'); ?>
+                        
                         </td>
                     </tr>
                 <?php endforeach; ?>
                 <tfoot>
                     <tr class="total">
-                        <td colspan="3">Total</td>
+                        <td colspan="2">Total</td>
                         <td><?= $this->cart->total(); ?> €</td>
                     </tr>
                 </tfoot>
             </table>
-            <?= anchor('vente/recapitulatif', '<button type="button" class="btn btn-info"><i class="glyphicon glyphicon-bullhorn"></i> Pronto !</button>'); ?>
-            <?= anchor('vente/destroy', '<button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Annuler</button>'); ?>
+            <?= anchor('vente/recapitulatif', '<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-bullhorn"></span> Pronto !</button>'); ?>
+            <?= anchor('vente/destroy', '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Annuler</button>'); ?>
         </aside>
         <?php endif; ?>
     </div> <!--fin de row-->
