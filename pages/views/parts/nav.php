@@ -3,12 +3,12 @@
    <div class="container">
     <ul class="nav navbar-nav">
         <?php if($this->session->userdata('is_logged_in')):?>
-            <li><?= anchor('/login/deconnexion', 'Se déconnecter'); ?></li>
+            <li><?= anchor('/login/deconnexion', '<span class="glyphicon glyphicon-user"></span> Se déconnecter'); ?></li>
         <?php else: ?>
-            <li><?= anchor('/login/', 'Se connecter'); ?></li>
+            <li><?= anchor('/login/', '<span class="glyphicon glyphicon-user"></span> Se connecter'); ?></li>
         <?php endif; ?>
            <li><?= anchor('/vente', 'Les Pizzas'); ?></li>
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container" id="wrap">

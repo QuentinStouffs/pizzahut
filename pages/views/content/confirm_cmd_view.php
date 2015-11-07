@@ -1,2 +1,2 @@
-<p>Votre commande à bien été enrégistrée.</p>
-<?= anchor('/', 'Retour page d\'acceuil'); ?>
+<p class="alert alert-success"><span class="glyphicon glyphicon-thumbs-up"></span> Votre commande à bien été enrégistrée.</p>
+<p><?=anchor('/', 'Retour Accueil', 'class="btn btn-info"'); ?></p>

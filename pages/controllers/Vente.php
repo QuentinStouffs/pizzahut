@@ -88,7 +88,6 @@ class Vente extends CI_CONTROLLER {
                          'commande' => $this->cart->contents()
                         );
             $var = $this->vente_model->new_cmd($cmd);
-            var_dump($var);
             if ($var == TRUE){
                 
                 $this->cart->destroy();
