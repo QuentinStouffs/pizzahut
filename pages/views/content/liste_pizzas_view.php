@@ -10,21 +10,16 @@
                 foreach($pizzas as $p): ?> <!--Listage des pizzas-->
                     <div class="col-xs-4">
                        <div class="thumbnail">
-                         <!--//ouverture du formulaire pour le panier-->
-                        
                             <h3 class="caption"><?= $p->nom_pizza; ?></h3>
-                        
-                    
-                            <!--                       <img src="http://lorempixel.com/400/200/cats/">-->
                                 <?= img($p->PK_pizza.'.jpg', $p->nom_pizza); ?>
                             
                             <div class="prix text-center">
-                                <span><?= $p->prix; ?><i class="glyphicon glyphicon-euro"></i></span>
+                                <p><?= $p->prix; ?><span class="glyphicon glyphicon-euro"></span></p>
                             </div>
                             <div class="ingredients">
-                                <?= $p->ingredients; ?>
+                                <p><?= $p->ingredients; ?></p>
                             </div>
-                            
+                            <!--//ouverture du formulaire pour changer la quantité-->
                             <?= form_open('vente/ajout_panier', array('class' => 'form-inline')); ?>
                                <div class="form-group">
                                    <label class="sr-only" for="quantite">quantite</label>
@@ -49,7 +44,7 @@
         <table class="table table-striped">
             <caption>Votre commande</caption>
 
-    <!--                <a href="vente/supcaddie"><span class="glyphicon glyphicon-trash"></span></a></caption>-->
+
                 <thead>
                     <tr>
                         <th>Qté</th>

@@ -33,8 +33,6 @@ class admin_model extends CI_Model {
         $config = array('upload_path' => './assets/images/',
                         'allowed_types' => 'gif|jpg|png',
                         'max_size' => 2048,
- //                       'max_height' => 100,
- //                        'max_width' => 200,
                         'file_name' => $id
                                     );
         $this->load->library('upload', $config);
@@ -72,8 +70,6 @@ class admin_model extends CI_Model {
                             'allowed_types' => 'gif|jpg|png',
                             'overwrite' => TRUE,
                             'max_size' => 2048,
-     //                       'max_height' => 100,
-     //                        'max_width' => 200,
                             'file_name' => $id
                                         );
             $this->load->library('upload', $config);
