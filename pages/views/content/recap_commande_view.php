@@ -1,42 +1,49 @@
+
 <?php
     if(!empty($commande)): ?>
        
-       <div id="caddie">
-       <?php var_dump($this->session->userdata('is_logged_in')); ?>
-        <table>
-            <caption>Votre commande <?= anchor('vente/destroy', '<span class="supprime glyphicon glyphicon-trash">sup</span>'); ?></caption>
+       <div id="caddie" class="row">
+           <div class="col-md-12">
+           <table  class="table table-striped">
+                <caption>Récapitulatif de votre commande</caption>
 
-<!--                <a href="vente/supcaddie"><span class="glyphicon glyphicon-trash"></span></a></caption>-->
-            <thead>
-                <tr>
-                    <th>Qté</th>
-                    <th>Nom</th>
-                    <th>Prix</th>
-                    <th>Supprimer</th>
-                </tr>
-            </thead>
-<!--                parcours le caddie -->
-            <?php foreach ($commande as $article): ?>
-                <tr>
-                    <td> <?= form_open('vente/update'); ?>
-                    <?= form_hidden ('rowid', $article['rowid']); ?>
-                    <input type="number" name="majqty" value="<?= $article['qty']; ?>">
-                    <?= form_submit('update', 'Modifier'); ?>
-                    <?= form_close(); ?>
-                    </td>
-                    <td><?= $article['name']; ?></td>
-                    <td><?= $article['subtotal'] ?></td>
-                    <td><?= anchor('vente/supprimer/'.$article['rowid'], '<span class="supprime glyphicon glyphicon-remove-circle">sup</span>'); ?></td>
-                </tr>
-            <?php endforeach; ?>
-            <tfoot>
-                <tr class="total">
-                    <td colspan="3">Total</td>
-                    <td><?= $this->cart->total(); ?> $</td>
-                </tr>
-            </tfoot>
-        </table>
-        <?= anchor('vente/commander', 'Pronto commande !'); ?>
+
+                <thead>
+                    <tr>
+                        <th>Quantité</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+    <!--                parcours le caddie -->
+                <?php foreach ($commande as $article): ?>
+                    <tr>
+                        <td> 
+                            <?= form_open('vente/update', 'class="form-inline"'); ?>
+                            <?= form_hidden ('rowid', $article['rowid']); ?>
+                            <div class="form-group">
+                                <label for="majqty" class="sr-only">Quantité</label>
+                                <input type="number" name="majqty" value="<?= $article['qty']; ?>" class="form-control" style="width: 7rem;">
+                                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span></button>
+                                <?= anchor('vente/supprimer/'.$article['rowid'], '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>'); ?>
+                            </div>
+                            <?= form_close(); ?>
+                        </td>
+                        <td><?= $article['name']; ?></td>
+                        <td><?= $article['subtotal'] ?> €</td>
+                        <td></td>
+                    </tr>
+                <?php endforeach; ?>
+                <tfoot>
+                    <tr class="total">
+                        <td colspan="2">Total</td>
+                        <td><?= $this->cart->total(); ?> €</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <?= anchor('vente/commander', '<button type=button class="btn btn-info"><span class="glyphicon glyphicon-cutlery"></span> Commander</button>'); ?>
+             <?= anchor('vente/destroy', '<button type=button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Annuler</button>'); ?>
+        </div>
     </div>
     
     <?php else: ?>

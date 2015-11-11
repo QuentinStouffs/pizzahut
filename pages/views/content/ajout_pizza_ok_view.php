@@ -1,4 +1,2 @@
-<h2>la pizza a bien été insérée</h2>
-
-
-<?= anchor('administration', 'Retour a l\'administration'); ?>
+<p class="alert alert-success"><span class="glyphicon glyphicon-thumbs-up"></span> La pizza a bien été enrégistrée.</p>
+<p><?=anchor('/administration', 'Retour Admin', 'class="btn btn-info"'); ?></p>

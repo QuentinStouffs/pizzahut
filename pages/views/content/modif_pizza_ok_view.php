@@ -1,2 +1,2 @@
-<p>La pizza à bien été modifiée</p>
-<?= anchor('administration', 'Retour a l\'administration'); ?>
+<p class="alert alert-success"><span class="glyphicon glyphicon-thumbs-up"></span> La pizza a bien été modifiée.</p>
+<p><?=anchor('/administration', 'Retour Admin', 'class="btn btn-info"'); ?></p>

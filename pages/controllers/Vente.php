@@ -83,20 +83,28 @@ class Vente extends CI_CONTROLLER {
 // Envoi de la commande
     public function commander(){
         if ($this->session->userdata('is_logged_in')){
-            
-            $cmd = array('user' => $this->session->userdata('pseudo'),
-                         'commande' => $this->cart->contents()
-                        );
-            $var = $this->vente_model->new_cmd($cmd);
-            var_dump($var);
-            if ($var == TRUE){
+            //vérifie que l'utilisateur n'est pas un admin (Admin n'est pas dans la db, commande impossible)
+            if($this->session->userdata('is_admin')){
                 
-                $this->cart->destroy();
-                
-                $data['contenu'] = 'confirm_cmd_view';
+                $data['contenu'] = 'erreur_admin_view';
                 $this->load->view('template', $data);
+                
+            }else{
+                
+                $cmd = array('user' => $this->session->userdata('pseudo'),
+                             'commande' => $this->cart->contents()
+                            );
+                $var = $this->vente_model->new_cmd($cmd);
+                if ($var == TRUE){
+
+                    $this->cart->destroy();
+
+                    $data['contenu'] = 'confirm_cmd_view';
+                    $this->load->view('template', $data);
+                }
             }
         }
+        
        else{
             redirect('login');
             

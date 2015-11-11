@@ -19,8 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->where('pseudo_mangeur', $this->input->post('pseudo'));
             $this->db->where('password_mangeur', md5($this->input->post('password')));
             $query = $this->db->get('mangeur');
-                
-            echo $query->num_rows();
+            
             if($query->num_rows() == 1){ // si le nombre de lignes correspondantes est == 1, renvoie TRUE
                 
                 return true;

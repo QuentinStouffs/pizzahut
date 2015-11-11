@@ -1,6 +1,16 @@
+html, body {
+    height: 100%;
+}
+#wrap {
+    min-height: 100%;
+}
 aside#caddie{
     
     position: fixed;
     right: 10px;
     
+}
+
+.red {
+    color: red;
 }
