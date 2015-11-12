@@ -15,7 +15,7 @@ class vente_model extends CI_Model {
         return $results;
         
     }
-    function get($id) { //recupère un element dans la db
+    function get($id) { //recupère un element id dans la db
             
             $results = $this->db->get_where('pizza', array('PK_pizza' => $id))
                 ->result();
@@ -32,15 +32,13 @@ class vente_model extends CI_Model {
                         ->row();
         
         $commande = $cmd['commande'];
-        
-//        a faire: boucle parcourant le tableau $commande et qui insère la commande et le détail dans la db
-        
+                
         // insère la commande et recupère PK_commande
         
         $this->db->insert('commande', array('FK_mangeur' => $user->PK_mangeur));
         $numcmd = $this->db->insert_id();
         
-//        insère les données dans le détail de la commande
+        // insère les données dans le détail de la commande
         
         foreach($commande as $article){
             

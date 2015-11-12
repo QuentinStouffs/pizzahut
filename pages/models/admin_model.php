@@ -22,6 +22,7 @@ class admin_model extends CI_Model {
     }
     
     public function add_pizza(){
+        //Insère les données de la pizza dans la db
         $data = array('nom_pizza' => $this->input->post('nom'),
                       'ingredients' => $this->input->post('ingredients'),
                       'prix' => $this->input->post('prix')
@@ -29,7 +30,7 @@ class admin_model extends CI_Model {
         $insert = $this->db->insert('pizza', $data);
         $id = $this->db->insert_id();
         
-                                // ajout de l'image au dossier assets/images
+        // ajout de l'image au dossier assets/images
         $config = array('upload_path' => './assets/images/',
                         'allowed_types' => 'gif|jpg|png',
                         'max_size' => 2048,
@@ -58,17 +59,18 @@ class admin_model extends CI_Model {
     
     public function update_pizza($id){
         
+        //mise a jour des champs à modifier
         $data = array('nom_pizza' => $this->input->post('nom'),
                       'ingredients' => $this->input->post('ingredients'),
                       'prix' => $this->input->post('prix')
                         );
         $insert = $this->db->where('PK_pizza', $id)->update('pizza', $data);
         
-        // ajout de l'image au dossier assets/images
+            // ajout de l'image au dossier assets/images
         
             $config = array('upload_path' => './assets/images/',
                             'allowed_types' => 'gif|jpg|png',
-                            'overwrite' => TRUE,
+                            'overwrite' => TRUE,  
                             'max_size' => 2048,
                             'file_name' => $id
                                         );
@@ -86,7 +88,7 @@ class admin_model extends CI_Model {
             $this->image_lib->resize();
         
         
-        return $insert;
+        return true;
         
     }
 }
